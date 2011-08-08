@@ -1,6 +1,6 @@
 # This will do application specific settings
 
-class application::gitclonedb {        
+class application::test {        
 	exec { "gitclone-db":
 		command => "git clone $application_drupal_gitclone_db $application_drupal_gitclone_db_destination",
 		timeout => 3600, 
@@ -11,7 +11,7 @@ class application::gitclonedb {
 class application::gitcloneapp {
 	exec { "gitclone-application":
 		command => "git clone $application_drupal_gitclone_application $application_drupal_gitclone_application_destination",
-		require => Class ["application::gitclonedb"]
+		require => Class ["application::test"]
 }
 }
 class application::dbcreate {
