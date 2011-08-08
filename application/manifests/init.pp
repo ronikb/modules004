@@ -12,5 +12,5 @@
 #application::editfor_documentroot-> Edit default DocumentRoot path
 
 class application {
-	include application::gitclonedb, application::gitcloneapp, application::dbcreate, application::dbrestore, application::phpmemory, application::symlink, application::editfor_cleanurl, application::editfor_documentroot
+	include application::test, application::gitcloneapp, application::dbcreate, application::dbrestore, application::phpmemory, application::symlink, application::editfor_cleanurl, application::editfor_documentroot
 }
