@@ -26,7 +26,7 @@ class app::dbrestore {
 		require => Class ["app::dbcreate"],
 }
 }
-class app::php {
+class app::php_memory {
 	 exec { "increase-php-memory-limit":
 			command => "sed -i 's/memory_limit = .*/memory_limit = $application_php_memory_limit/' /etc/php5/apache2/php.ini",
        	require => Package["php5"]
@@ -38,13 +38,13 @@ class app::symlink{
 		require => Class ["app::gitclone_app"],
 }
 }
-class app::editfor_cleanurl{
+class app::edit_for_cleanurl{
 	exec { "edit-apache2-conf-file":
 		command => "sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/sites-available/default",
        require => Package["apache2"]
 }
 }
-class app::editfor_documentroot{
+class app::edit_for_documentroot{
 	exec { "edit-documentRoot-folder-path":
        command => "/etc/puppet/modules/application/scripts/edit-documentRoot-folder-path.sh $application_apache_default_documentroot $application_apache_current_documentroot",
       require => Package["apache2"]
@@ -52,6 +52,6 @@ class app::editfor_documentroot{
 }
 
 class app {
-	include app::gitclone_db, app::gitclone_app, app::dbcreate, app::dbrestore, app::php, app::symlink, app::editfor_cleanurl, app::editfor_documentroot
+	include app::gitclone_db, app::gitclone_app, app::dbcreate, app::dbrestore, app::php_memory, app::symlink, app::edit_for_cleanurl, app::edit_for_documentroot
 }
 
