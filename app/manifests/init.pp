@@ -56,8 +56,14 @@ class app::edit_for_documentroot{
       require => Package["apache2"]
 }
 }
+#This will give write permission to files folder
+class app::write_permissions_to_files_folder {
+	exec { "write-permissions-to-files-folder":
+		command => "/etc/puppet/modules/app/scripts/drupal-files-folder-permission.sh",
+}
+}
 
 class app {
-	include app::gitclone_db, app::gitclone_app, app::dbcreate, app::dbrestore, app::php_memory, app::symlink, app::edit_for_cleanurl, app::edit_for_documentroot
+	include app::gitclone_db, app::gitclone_app, app::dbcreate, app::dbrestore, app::php_memory, app::symlink, app::edit_for_cleanurl, app::edit_for_documentroot, app::write_permissions_to_files_folder, app::change_ownership_of_a_folder
 }
 
