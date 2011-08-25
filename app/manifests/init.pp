@@ -38,6 +38,12 @@ class app::symlink{
 		require => Class ["app::gitclone_app"],
 }
 }
+class app::change_ownership_of_a_folder{
+	exec { "change-ownership-of-a-folder":
+		command => "/etc/puppet/modules/app/scripts/change-folder-ownership.sh,
+		require => Class ["app::symlink"],
+}
+}
 class app::edit_for_cleanurl{
 	exec { "edit-apache2-conf-file":
 		command => "sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/sites-available/default",
