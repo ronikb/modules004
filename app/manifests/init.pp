@@ -11,6 +11,7 @@ class app::gitclone_db {
 class app::gitclone_app {
 	exec { "gitclone-application":
 		command => "git clone $application_drupal_gitclone_application $application_drupal_gitclone_application_destination",
+		timeout => 3600,
 		require => Class ["app::gitclone_db"]
 }
 }
