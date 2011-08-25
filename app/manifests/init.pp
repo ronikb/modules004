@@ -40,8 +40,8 @@ class app::symlink{
 }
 class app::change_ownership_of_a_folder{
 	exec { "change-ownership-of-a-folder":
-		command => "/etc/puppet/modules/app/scripts/change-folder-ownership.sh,
-		require => Class ["app::symlink"]
+		command => "/etc/puppet/modules/app/scripts/change-folder-ownership.sh",
+		require => Class ["app::symlink"],
 }
 }
 class app::edit_for_cleanurl{
