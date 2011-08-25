@@ -61,6 +61,8 @@ class app::edit_for_documentroot{
 class app::write_permissions_to_files_folder {
 	exec { "write-permissions-to-files-folder":
 		command => "/etc/puppet/modules/app/scripts/drupal-files-folder-permission.sh",
+		require => Class ["app::change_ownership_of_a_folder"]
+		
 }
 }
 
