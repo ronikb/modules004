@@ -1,6 +1,6 @@
 #This is the medigy installation steps for Ubuntu/Debian distributions.
 
-sudo apt-get install puppet
+sudo apt-get install puppet1111111
 sudo apt-get install git-core
 sudo ssh-keygen -t rsa 
 sudo vi /root/.ssh/id_rsa.pub
